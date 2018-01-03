@@ -17,17 +17,17 @@ class FileController extends BaseController{
     public function showfile(){
         $fileModel = D('file');
         $filefolder=I('post.select');
-        if($filefolder=="teacher") {//判断展示哪类文件
-            $fileusername = $_SESSION['teacherid'];////////////////////////////////////////////////////////////////////
-
-            $result = $fileModel->queryDataByUsername($fileusername);//，查询信息数据
+        if($filefolder=="common") {//判断展示哪类文件
+//            $fileusername = $_SESSION['teacherid'];//
+//            $result = $fileModel->queryDataByUsername($fileusername);//，查询信息数据
+            $result=$fileModel->queryFileByFolder('ziyuan');
             for($i=0;$i<count($result);$i++){
                 $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
 
         }
-        else if($filefolder=="common"){
-            $result=$fileModel->queryFileByFolder('testdata');//查询文件夹内文件根据page分页
+        else if($filefolder=="private"){
+            $result=$fileModel->queryFileByFolderAndUsername('testdata',$_SESSION['username']);//查询文件夹内文件根据page分页
             for($i=0;$i<count($result);$i++){
                 $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
@@ -44,7 +44,7 @@ class FileController extends BaseController{
         $file= $_FILES['upfile'];
         $username = session('username');
         $uptype=I('post.filetype');
-        if($uptype=="teacherfile"){//上传正常教师文件
+        if($uptype=="teacherfile"){//上传共有文件
             $filename=$file['name'];
             $data['filelabel']=I('post.label1');//获取标签
             if($data['filelabel']==""){
@@ -52,11 +52,11 @@ class FileController extends BaseController{
             }
             $data['filesavefolder'] = "ziyuan";
         }
-        elseif($uptype=="testdata"){//上传公共文件
+        elseif($uptype=="testdata"){//上传私有文件
             $filename=$file['name'];
             $data['filesavefolder'] = "testdata";
-            $data['filelabel']="公共文件";
-          //  $filename = $this->subFilename($file['name'],$filename);//将后输入的文件名拼接后缀
+            $data['filelabel']="私有文件";
+
         }
         $filenamemd5=$this->md5FileName($filename,date(Y-m-d));
         $filesavename = $this->subFilename($filename,$filenamemd5);
@@ -122,7 +122,7 @@ class FileController extends BaseController{
 
         $reallyfile=urlencode($reallyfile);
         $file = iconv("utf-8","GBK",$file);
-        $url ='C:/AppServ/www/test/Public/'.$folders.'/'.$file;
+        $url ='H:/AppServ/www/test/Public/'.$folders.'/'.$file;
         import('Org.Net.Http');
         $fileModel=D('file');
         $fileModel->addCount($file);
@@ -143,7 +143,7 @@ class FileController extends BaseController{
 
             $reallyfile = urlencode($reallyfile);
             $file = iconv("utf-8", "GBK", $file);
-            $url = 'C:/AppServ/www/test/Public/'.$folders.'/'.$file;
+            $url = 'H:/AppServ/www/test/Public/'.$folders.'/'.$file;
 
             if (file_exists($url)) {
                 $str = file_get_contents($url);//将整个文件内容读入到一个字符串中
@@ -163,8 +163,7 @@ class FileController extends BaseController{
     public function showFileSearchByLabel(){
         $label=I('post.filelabel');
         $fileModel = D('file');
-        $fileusername = $_SESSION['teacherid'];//获取该页面文件是谁的
-        $result=$fileModel->searchFileBylabel($fileusername,$label);
+        $result=$fileModel->searchFileBylabel('ziyuan',$label);
         echo json_encode($result);
     }
     public function UserinfoSearchByLabel(){

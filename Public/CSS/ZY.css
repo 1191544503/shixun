@@ -29,6 +29,10 @@ header span {
   font-size: 1.7em;
   margin-left: 2em;
 }
+header a {
+  font-size: 1.2em;
+  marign-top:30px;
+}
 header span *{
     vertical-align: middle;
 }

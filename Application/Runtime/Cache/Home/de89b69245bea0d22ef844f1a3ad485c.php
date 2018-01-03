@@ -17,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <title>文件上传</title>
-    <link rel="stylesheet" type="text/css" href="/test2.0/Public/CSS/upload.css">
+    <link rel="stylesheet" type="text/css" href="/shixun/Public/CSS/upload.css">
     <script type="text/javascript" src="/jquery.min.js"></script>
 </head>
 <body>

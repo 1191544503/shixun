@@ -1,0 +1,126 @@
+[ 2018-01-03T13:35:22+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000427s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:22+08:00 ] ::1 /shixun/Application/Home/View/Index/jquery-3.2.1.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000533s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:22+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000518s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:31+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000291s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:39+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000542s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:39+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000515s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:39+08:00 ] ::1 /shixun/Application/Home/View/Index/jquery-3.2.1.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000476s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:35:39+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000426s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:36:48+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000475s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:36:48+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000445s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:36:48+08:00 ] ::1 /shixun/Application/Home/View/Index/jquery-3.2.1.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001996s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:36:48+08:00 ] ::1 /shixun/Application/Home/View/Index/semantic.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000508s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:37:31+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000511s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:37:32+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000524s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T13:37:32+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.ttf
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000546s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:38+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000438s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:38+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000340s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:38+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.ttf
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000295s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:44+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000400s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:44+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.woff
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000672s ]
+ERR: 无法加载模块:Application
+
+[ 2018-01-03T15:01:44+08:00 ] ::1 /shixun/Application/Home/View/Index/themes/default/assets/fonts/icons.ttf
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000306s ]
+ERR: 无法加载模块:Application
+

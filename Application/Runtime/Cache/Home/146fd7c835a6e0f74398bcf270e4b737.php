@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/test2.0/Public/CSS/ZY.css">
-  <link rel="stylesheet" href="/test2.0/Public/CSS/font-awesome.min.css">
+  <link rel="stylesheet" href="/shixun/Public/CSS/ZY.css">
+  <link rel="stylesheet" href="/shixun/Public/CSS/font-awesome.min.css">
+  <link rel="stylesheet" href="/shixun/Public/js/semantic.min.css">
+  <script type="text/javascript" src="/shixun/Public/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/shixun/Public/js/semantic.min.js"></script>
   <title>文件&软件下载站(测试版)</title>
   <style  type="text/css">
     section ul li span:nth-of-type(1){
@@ -59,7 +62,7 @@
 
 <body>
 <header>
-  <span><img src="/test2.0/Public/image/1.png" width="100" alt="">资源下载站</span>
+  <span><img src="/shixun/Public/image/1.png" width="100" alt="">资源下载站</span>
   <div class="upl">
     <a href="<?php echo U('File/displayup');?>">上传文件</a>
   </div>
@@ -86,20 +89,20 @@
   </div>
   <nav class="right">
     <ul>
-      <li><a href="http://210.30.1.126/index.php/Index">首页</a></li>
-      <li><a href="http://210.30.1.126/index.php/Problems/all">练习</a></li>
-      <li><a href="http://210.30.1.126/index.php/Competition">竞赛</a></li>
-      <li><a href="http://210.30.1.126/index.php/Test">实验</a></li>
-      <li><a href="http://210.30.1.126/index.php/Exam">考试</a></li>
-      <li><a href="http://210.30.1.126/index.php/Bbs/invitation_list">讨论版</a></li>
-      <li><a href="http://210.30.1.126/index.php/Home/help">帮助</a></li>
+      <li><a href="http://210.30.1.126/index.php/Index">XXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Problems/all">XXXXXXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Competition">XXXXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Test">XXXXXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Exam">XXXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Bbs/invitation_list">XXXXXXXXXXX</a></li>
+      <li><a href="http://210.30.1.126/index.php/Home/help">XXXXXXXXXX</a></li>
       <li>意见反馈<br/>imax2017@yeah.net</li>
     </ul>
   </nav>
 
 </article>
 <footer>
-  <img src="/test2.0/Public/image/name.png" width="500" alt="">
+  <img src="/shixun/Public/image/name.png" width="500" alt="">
   <div id="time">
 
   </div>
