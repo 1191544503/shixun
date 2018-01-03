@@ -1,0 +1,18 @@
+#page_bbs{
+    margin-top: -29px;
+    background:#044A73;
+    width: 100%;
+}
+
+
+/*主体部分里居中的最重要内容区*/
+#bbs_page{
+    width: 980px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+    /*background-image: url("");*/
+    line-height: 22px;
+    font: 12px 'Microsoft YaHei', 微软雅黑, Arial, Lucida Grande, Tahoma, sans-serif;
+    color: black;
+}

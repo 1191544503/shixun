@@ -1,0 +1,119 @@
+select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #ccc;
+
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("img/arrow.png") no-repeat scroll right center transparent;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-left: 35px;
+  padding-right: 14px;
+  width: 150px;
+  height: 30px;
+}
+select option{
+  word-spacing: 1px;
+  padding:5px;
+}
+body{
+  color: #384452;
+  font-family:sans-serif;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+header span {
+  font-size: 1.7em;
+  margin-left: 2em;
+}
+header span *{
+    vertical-align: middle;
+}
+.container{
+  width: 1080px;
+  margin: 0 auto;
+  display: -webkit-flex; /* Safari */
+  display: flex;
+  justify-content:center;
+}
+.left{
+  flex-grow: 2;
+  padding: 20px;
+}
+.left input{
+  float:right;
+  height: 25px;
+}
+.right{
+  /*flex-grow: 1;*/
+  align-items:flex-end;
+  margin-top: 5em;
+  font-size: 1.3em;
+  font-weight: 100;
+}
+.right li{
+  padding: 2px;
+}
+section ul li span{
+  display: inline-block;
+  width: 200px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 1.5em;
+}
+section ul li span:nth-of-type(1){
+  width: 300px;
+}
+section ul li span:nth-of-type(3){
+  width: 150px;
+  text-align: center;
+}
+section ul li span:nth-of-type(4){
+  width: 65px;
+  height: 100%;
+  border-radius: 3px;
+  color: #fff;
+  border: 1px solid #fff;
+  background: rgba(255, 0, 0, 0.5);
+  text-align: center;
+  letter-spacing: 1px;
+}
+i{
+    color:#088acb;
+}
+ul,li{
+list-style: none;
+}
+.fl{
+  float: right;
+}
+a{
+  display: block;
+  text-decoration: none;
+  color: #088acb;
+  transition: transform .3s ease-in-out;
+}
+nav a:hover{
+  color:#62bbe7;
+  transform: translate(10px,0px);
+  -webkit-transform:translate(10px,0px);
+}
+i:hover{
+  color:#62bbe7;
+}
+footer{
+  text-align: center;
+  position: relative;
+  top:100px;
+}
+.colorred i{
+  color: #a00;
+  margin-right: 30px;
+}
+.colorred i:hover{
+  color: #f00;
+}

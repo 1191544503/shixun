@@ -1,0 +1,41 @@
+html,body,div,span,h1,h2,img,ul,p
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+body{
+	background: #efefef;
+}
+#body{
+	width: 100%;
+	margin-top: 100px; 	
+}
+#page{
+	width: 980px;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: hidden;
+    /*background: url("img/1234.png");*/
+    height: 870px;
+    background-size: cover;
+}
+#title{
+	font-size: 20px;
+	margin-bottom: 20px;
+	/*color: #999;*/
+}
+form{
+	border:1px solid #ccc;
+	padding: 20px;
+}
+.desc{
+	padding: 20px;
+}
+.dec{
+	font-weight: 700;
+}
+a{
+	text-decoration: none;
+}
