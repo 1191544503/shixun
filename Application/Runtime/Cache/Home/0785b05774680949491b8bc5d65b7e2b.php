@@ -19,7 +19,7 @@
     <a class="item" onclick="$('#login').modal('show'); " style="display:inline-block;float:right">
       <i class="olive sign in icon"></i> 登录&nbsp&nbsp&nbsp&nbsp
     </a><?php endif; ?>
-  <?php if($_SESSION['islogin'] == 1): ?><a href="<?php echo U('User/teacherShow');?>">个人中心</a><?php endif; ?>
+  <?php if($_SESSION['islogin'] == 1): ?><a href="<?php echo U('User/teacherShow');?>" style="margin:20px; display:inline-block;float:right">个人中心</a><?php endif; ?>
 
 </header>
 <article class="container">
@@ -282,7 +282,7 @@
     })
     .then(text=>{
             document.getElementById('Content').innerHTML='';
-      //  console.log("请求成功，响应数据为:",text);
+        console.log("请求成功，响应数据为:",text);
         for (let i in text) {
             xx(text[i],i);
         }
@@ -313,7 +313,7 @@
     })
     .then(text=>{
             document.getElementById('Content').innerHTML='';
-       // console.log("请求成功，响应数据为:",text);
+        console.log("请求成功，响应数据为:",text);
         FILE=[];
         for (let i in text) {
             xx(text[i],i);

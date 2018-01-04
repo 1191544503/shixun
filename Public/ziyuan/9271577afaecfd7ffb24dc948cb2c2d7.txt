@@ -1,0 +1,8 @@
+git init 初始化git 建立.git文件夹
+
+git remote -v查看定义的远程仓库
+git remote add 名字 路径】添加远程仓库 
+
+git add . 将该文件夹所有文件放入暂存区
+git commit -m "" 将暂存区的文件放入仓库
+ 

@@ -4,39 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>æ–‡ä»¶&è½¯ä»¶ä¸‹è½½ç«™(æµ‹è¯•ç‰ˆ)</title>
-  <link rel="stylesheet" href="__PUBLIC__/js/semantic.min.css">
-  <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="__PUBLIC__/js/semantic.min.js"></script>
   <link rel="stylesheet" href="__PUBLIC__/CSS/ZY.css">
   <link rel="stylesheet" href="__PUBLIC__/CSS/font-awesome.min.css">
-
+  <title>ÎÄ¼ş&Èí¼şÏÂÔØÕ¾(²âÊÔ°æ)</title>
+  <link rel="stylesheet" href="__ROOT__\Application\Home\View\Index\semantic.min.css" media="screen" title="no title" charset="utf-8">
+  <script type="text/javascript" src="__ROOT__\Application\Home\View\Index\jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="__ROOT__\Application\Home\View\Index\semantic.min.js"></script>
 </head>
 <body>
 <header>
-  <span><img src="__PUBLIC__/image/1.png" width="100" alt="">èµ„æºä¸‹è½½ç«™ </span>
-  <if condition="$_SESSION['islogin'] neq 1">
-    <a class="item" onclick="$('#re').modal('show');" style="display:inline-block;float:right"><i class="yellow user icon"></i>æ³¨å†Œ</a>
+  <span><img src="__PUBLIC__/image/1.png" width="100" alt="">×ÊÔ´ÏÂÔØÕ¾ </span>
+    <a class="item" onclick="$('#re').modal('show');" style="display:inline-block;float:right"><i class="yellow user icon"></i>×¢²á</a>
     <a class="item" onclick="$('#login').modal('show'); " style="display:inline-block;float:right">
-      <i class="olive sign in icon"></i> ç™»å½•&nbsp&nbsp&nbsp&nbsp
+      <i class="olive sign in icon"></i> µÇÂ¼&nbsp&nbsp&nbsp&nbsp
     </a>
-   </if>
-  <if condition="$_SESSION['islogin'] eq 1">
-      <a href="{:U('User/teacherShow')}" style="margin:20px; display:inline-block;float:right">ä¸ªäººä¸­å¿ƒ</a>
-  </if>
 
 </header>
 <article class="container">
   <div class=" left">
-    <i class="fa fa-linode fa-2x"></i>æ–‡ä»¶åˆ—è¡¨
+    <i class="fa fa-linode fa-2x"></i>ÎÄ¼şÁĞ±í
     <select class="" name="listone" id="Sel" onchange="Change()">
-      <option value="none" disabled selected>---è¯·é€‰æ‹©---</option>
-      <option value="common">å…¬å…±èµ„æº</option>
-      <option value="private"> ç§æœ‰èµ„æº</option>
+      <option value="none" disabled selected>---ÇëÑ¡Ôñ---</option>
+      <option value="teacher">¹«¹²×ÊÔ´</option>
+      <option value="common"> Ë½ÓĞ×ÊÔ´</option>
     </select>
     <label for="search">
       <i class="fa fl fa-superpowers fa-lg fa-border" onclick="Find()"></i>
-    </label><input id="search" type="text" name="" value="" placeholder="æœ ç´¢">
+    </label><input id="search" type="text" name="" value="" placeholder="ËÑ Ë÷">
     <section>
       <ul>
         <li><span><i class="fa fa-cube fa-lg"></i> Name</span><span><!--i class="fa fa-crop fa-lg"></i> UploadUser<--></span><span><i class="fa fa-calendar-minus-o fa-lg"></i> Last Update</span></li>
@@ -56,7 +50,7 @@
       <li><a href="http://210.30.1.126/index.php/Exam">XXXXXXXXXXXXX</a></li>
       <li><a href="http://210.30.1.126/index.php/Bbs/invitation_list">XXXXXXXXXX</a></li>
       <li><a href="http://210.30.1.126/index.php/Home/help">XXXXXXXXXXXX</a></li>
-      <li>æ„è§åé¦ˆ<br/>imax2017@yeah.net</li>
+      <li>Òâ¼û·´À¡<br/>imax2017@yeah.net</li>
     </ul>
   </nav>
 
@@ -70,14 +64,14 @@
         <div class="field">
           <label>Username</label>
           <div class="ui left icon input" style="padding: 0">
-            <input name="username" placeholder="ç”¨æˆ·å" type="text" id="username" onkeydown="key_login(event)">
+            <input name="username" placeholder="ÓÃ»§Ãû" type="text" id="username" onkeydown="key_login(event)">
             <i class="user icon"></i>
           </div>
         </div>
         <div class="field">
           <label>Password</label>
           <div class="ui left icon input" style="padding: 0">
-            <input name="" placeholder="å¯†ç " type="password" id="password" onkeydown="key_login(event)">
+            <input name="" placeholder="ÃÜÂë" type="password" id="password" onkeydown="key_login(event)">
             <i class="lock icon"></i>
           </div>
         </div>
@@ -100,7 +94,7 @@
     }
 
     function success(session_id) {
-        window.location.href = "{:U('Index/index')}";
+        window.location.href = "{:U('/list')}";
     }
 
     function login() {
@@ -115,20 +109,22 @@
             },
             async: true,
             success: function(data) {
-                console.log(data);
                 error_code = data.error_code;
                 switch (error_code) {
                     case 1001:
-                        show_error("ç”¨æˆ·ä¸å­˜åœ¨");
+                        show_error("ÓÃ»§²»´æÔÚ");
                         break;
                     case 1002:
-                        show_error("å¯†ç é”™è¯¯");
+                        show_error("ÃÜÂë´íÎó");
+                        break;
+                    case 1003:
+                        show_error("¸ÃÓÃ»§Î´¼¤»î,Çëµ½ÓÊÏäÖĞ¼¤»î¸ÃÕË»§");
                         break;
                     case 1:
                         success(data.session_id);
                         return;
                     default:
-                        show_error("æœªçŸ¥é”™è¯¯");
+                        show_error("Î´Öª´íÎó");
                         break;
                 }
                 $("#Login").text("login");
@@ -137,8 +133,8 @@
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 // alert(XMLHttpRequest.responseText);
-                show_error("æœªçŸ¥é”™è¯¯");
-                $("#Login").text("ç™»å½•");
+                show_error("Î´Öª´íÎó");
+                $("#Login").text("µÇÂ¼");
                 $('.ui.small.modal').modal('hide');
             }
         });
@@ -156,26 +152,26 @@
     <div class="ui padded  column middle aligned very relaxed stackable grid">
       <div class="column">
         <div class="field">
-          <label for="username1">ç”¨æˆ·å</label>
+          <label for="username1">ÓÃ»§Ãû</label>
           <input type="text" placeholder="" id="username1" required>
         </div>
         <div class="field">
-          <label for="email">é‚®ç®±</label>
+          <label for="email">ÓÊÏä</label>
           <input type="email" placeholder="" id="email">
         </div>
         <div class="two fields">
           <div class="field">
-            <label class="ui header">å¯†ç </label>
+            <label class="ui header">ÃÜÂë</label>
             <input type="password" placeholder="" id="password1" required>
           </div>
           <div class="field">
-            <label class="ui header">ç¡®è®¤å¯†ç </label>
+            <label class="ui header">È·ÈÏÃÜÂë</label>
             <input type="password" placeholder="" id="password2" required>
           </div>
         </div>
 
-        <!--<a id="sign_up" class="ui button" href="javascript:(0);">æ³¨å†Œ</a>-->
-        <div id="sign_up" class="ui blue submit button">æ³¨å†Œ</div>
+        <!--<a id="sign_up" class="ui button" href="javascript:(0);">×¢²á</a>-->
+        <div id="sign_up" class="ui blue submit button">×¢²á</div>
       </div>
     </div>
   </form>
@@ -187,19 +183,18 @@
       }
 
       function success1() {
-          alert("æ³¨å†ŒæˆåŠŸ");
+          alert("×¢²á³É¹¦£¡,Çëµ½ÓÊÏäÖĞ½øĞĞ¼¤»î");
           window.location.href = "{:U('/list')}";
       }
 
       function submit() {
           if ($("#password1").val() != $("#password2").val()) {
-              show_error1("ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´");
+              show_error1("Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ");
               return;
           }
           $("#sign_up").addClass("loading");
           $.ajax({
-              url: "{:U('User/register')}",
-
+              url: "{:U('Usermin/register')}",
               type: 'POST',
               async: true,
               data: {
@@ -207,29 +202,30 @@
                   password1: $("#password1").val(),
                   password2: $("#password2").val(),
                   email: $("#email").val(),
+                  verify: $("#verify").val(),
                   // _csrf: document.head.getAttribute('data-csrf-token')
               },
               success: function(data) {
-                  console.log(data);
+                  // console.log(data);
 
                   error_code = data.error_code;
                   switch (error_code) {
                       case 2001:
-                          show_error1("æœåŠ¡å™¨æœªæ”¶åˆ°æ•°æ®");
+                          show_error1("·şÎñÆ÷Î´ÊÕµ½Êı¾İ");
                           break;
                       case 2005:
                       case 2002:
-                          show_error1("ç”¨æˆ·åä¸ºå­¦å·");
+                          show_error1("ÓÃ»§ÃûÎªÑ§ºÅ");
                           break;
                       case 2007:
                       case 2003:
-                          show_error1("å¯†ç ä¸å¾—ä¸ºç©º");
+                          show_error1("ÃÜÂë²»µÃÎª¿Õ");
                           break;
                       case 2008:
-                          show_error1("å·²ç»æœ‰äººç”¨è¿‡è¿™ä¸ªç”¨æˆ·åäº†");
+                          show_error1("ÒÑ¾­ÓĞÈËÓÃ¹ıÕâ¸öÓÃ»§ÃûÁË");
                           break;
                       case 2009:
-                          show_error1("ä¸¤æ¬¡å¯†ç ä¸ä¸€æ ·");
+                          show_error1("ÑéÖ¤Âë´íÎó");
                           break
                       case 2010:
                           show_error1(data.error);
@@ -238,14 +234,14 @@
                           success1();
                           break;
                       default:
-                          show_error1("æœªçŸ¥é”™è¯¯ï¼š" + JSON.stringify(data));
+                          show_error1("Î´Öª´íÎó£º" + JSON.stringify(data));
                           break;
                   }
                   $("#sign_up").removeClass("loading");
               },
               error: function(XMLHttpRequest, textStatus, errorThrown) {
                   alert(XMLHttpRequest.responseText);
-                  show_error("æœªçŸ¥é”™è¯¯");
+                  show_error("Î´Öª´íÎó");
                   $("#sign_up").removeClass("loading");
               }
           });
@@ -263,9 +259,9 @@
 </body>
 <script type="text/javascript" >
 
-    var FILE=[];//æ–‡ä»¶å
+    var FILE=[];//ÎÄ¼şÃû
     const Url2="{:U('File/showFileSearchByLabel')}";
-    /*  éå†æ¸²æŸ“  ${text.fileusername}*/
+    /*  ±éÀúäÖÈ¾  ${text.fileusername}*/
     let xx=(text,i)=>{
         let str=`<li><span><a href="${text.downloadurl}">${text.filename}</a></span><span></span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`
         document.getElementById('Content').innerHTML+=str;
@@ -286,17 +282,17 @@
     })
     .then(text=>{
             document.getElementById('Content').innerHTML='';
-        console.log("è¯·æ±‚æˆåŠŸï¼Œå“åº”æ•°æ®ä¸º:",text);
+      //  console.log("ÇëÇó³É¹¦£¬ÏìÓ¦Êı¾İÎª:",text);
         for (let i in text) {
             xx(text[i],i);
         }
     })
     }
-    /*  é€‰æ‹©  */
+    /*  Ñ¡Ôñ  */
     var Change=()=>{
         const url=`{:U('File/showfile')}`;
         let myselect=document.getElementById("Sel");
-        let index=myselect.selectedIndex ; // selectedIndexä»£è¡¨çš„æ˜¯ä½ æ‰€é€‰ä¸­é¡¹çš„index
+        let index=myselect.selectedIndex ; // selectedIndex´ú±íµÄÊÇÄãËùÑ¡ÖĞÏîµÄindex
         let val=myselect.options[index].value
 
         fetch(url,{
@@ -317,7 +313,7 @@
     })
     .then(text=>{
             document.getElementById('Content').innerHTML='';
-        console.log("è¯·æ±‚æˆåŠŸï¼Œå“åº”æ•°æ®ä¸º:",text);
+       // console.log("ÇëÇó³É¹¦£¬ÏìÓ¦Êı¾İÎª:",text);
         FILE=[];
         for (let i in text) {
             xx(text[i],i);
@@ -334,10 +330,10 @@
         }
     })
     .catch(err=>{
-       //     console.log("Fetché”™è¯¯:"+err);
+       //     console.log("Fetch´íÎó:"+err);
     })
     }
-    /*  æœç´¢  */
+    /*  ËÑË÷  */
     var Find=()=>{
         let myselect=document.getElementById("search").value;
         document.getElementById('Content').innerHTML='';

@@ -18,23 +18,21 @@ class FileController extends BaseController{
         $fileModel = D('file');
         $filefolder=I('post.select');
         if($filefolder=="common") {//判断展示哪类文件
-//            $fileusername = $_SESSION['teacherid'];//
-//            $result = $fileModel->queryDataByUsername($fileusername);//，查询信息数据
+            $username=$_SESSION['username'];
             $result=$fileModel->queryFileByFolder('ziyuan');
             for($i=0;$i<count($result);$i++){
                 $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
-
         }
         else if($filefolder=="private"){
-            $result=$fileModel->queryFileByFolderAndUsername('testdata',$_SESSION['username']);//查询文件夹内文件根据page分页
+         //  $username=$_SESSION['username'];
+           $result=$fileModel->queryFileByFoAndUs('testdata','2015082310');//查询文件夹内文件根据page分页
             for($i=0;$i<count($result);$i++){
                 $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
         }
         echo json_encode($result);
-
-}
+    }
 
     /**
      * 处理文件信息

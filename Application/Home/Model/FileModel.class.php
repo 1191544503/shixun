@@ -36,15 +36,16 @@ class FileModel extends  BaseModel{
         $result = $this->field('filename,filesavename,upfile_time,filesavefolder,fileusername,filelabel')->where("filesavefolder='{$folder}' and isdelete=0")->order('upfile_time desc')->select();
         return $result;
     }
-
+    public function queryFileByFoAndUs($folder,$username){
+        $result=$this->where("filesavefolder='{$folder}' and fileusername='2015082310' and isdelete=0")->order('upfile_time desc')->select();
+       // $result = $this->field('filename,filesavename,upfile_time,filesavefolder,fileusername,filelabel')->where("filesavefolder='{$folder}' and isdelete=0 and username='{$username}'")->order('upfile_time desc')->select();
+        return $result;
+    }
     public function queryFileCountByFolder($folder){
         $result=$this->where("filesavefolder='{$folder}' and isdelete=0")->count();
         return $result;
     }
-    public function queryFileByFolderAndUsername($folder,$username){
-        $result=$this->where("filesavefolder='{$folder}' and username='{$username}' and isdelete=0")->count();
-        return $result;
-    }
+
     public function deleteFile($filesavename){
         $sql = "update file set isdelete=1 where filesavename='{$filesavename}'";
         if($this->execute($sql)){
