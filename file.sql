@@ -15,6 +15,11 @@ create table user(
   id int AUTO_INCREMENT PRIMARY key NOT NULL,
 	username char(20) not null,
 	password char(100) not null,
-	email char(100) not null,
-	administrator int(11)
+	email char(100) not null
+);
+create table admin(
+  id int AUTO_INCREMENT PRIMARY key NOT NULL,
+	username char(20) not null,
+	password char(100) not null,
+	levels int(11)
 );

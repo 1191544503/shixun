@@ -62,7 +62,7 @@
 
 <body>
 <header>
-  <span><img src="__PUBLIC__/image/1.png" width="100" alt="">资源下载站</span>
+  <span><a href="{:U('Index/index')}" style="display:inline-block;"><img src="__PUBLIC__/image/1.png" width="100" alt="">资源下载站</a></span>
   <div class="upl">
     <a href="{:U('File/displayup')}">上传文件</a>
   </div>
@@ -89,13 +89,14 @@
   </div>
   <nav class="right">
     <ul>
-      <li><a href="http://210.30.1.126/index.php/Index">XXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Problems/all">XXXXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Competition">XXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Test">XXXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Exam">XXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Bbs/invitation_list">XXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Home/help">XXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
       <li>意见反馈<br/>imax2017@yeah.net</li>
     </ul>
   </nav>
@@ -115,7 +116,7 @@
     const Url2="{:U('File/UserinfoSearchByLabel')}";
     /*  遍历渲染  */
     let xx=(text,i)=>{
-        let str=`<li><span><i class="fa fa-trash-o fa-lg"></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>xxx</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
+        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete"></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>xxx</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
         document.getElementById('Content').innerHTML+=str;
     }
 
@@ -189,7 +190,6 @@
         var delet = document.getElementsByClassName('fa-trash-o');
         var label = document.getElementsByClassName('label');
         for (let x=0; x<delet.length;x++) {
-            //var r=confirm("Press a button")
             delet[x].onclick = function(){
                 let r=confirm("确认要删除"+FILE[x].filename+"吗？");
                 let filename=FILE[x].filesavename;

@@ -23,17 +23,17 @@
 <body>
 <div id="body">
     <div id="page">
-        <div><a href="<?php echo U('User/teacherShow');?>">返回教师页面</a></div>
+        <div><a href="<?php echo U('User/teacherShow');?>">返回个人中心</a></div>
         <br>
         <div id="title"><h1>文件上传</h1></div>
         <div class="desc">
-        <div class="dec">step1:选择教师文件或公共文件（教师文件只能被自己所教的学生看见）</div>
+        <div class="dec">step1:选择私有文件或公共文件（私有文件只能被自己所看见）</div>
         <div class="dec">step2:选择标签或填写新标签</div>
         <div class="dec">step3:选择文件并提交，若填写了新标签会自动新建并添加到此次上传的文件</div>
         </div>
         <form action = "<?php echo U('File/up');?>" method="post" enctype="multipart/form-data">
-            <input type="radio" id="T1" name="filetype" value="teacherfile" checked onchange="fun()"/><label for="T1">教师文件</label>
-            <input type="radio" id="T2" name="filetype" value="testdata"  onchange="fun()"/><label for="T2">公共文件</label>
+            <input type="radio" id="T1" name="filetype" value="teacherfile" checked onchange="fun()"/><label for="T1">公共文件</label>
+            <input type="radio" id="T2" name="filetype" value="testdata"  onchange="fun()"/><label for="T2">私有文件</label>
             <br>
             <br>
             <div id="testfile" style="display: none;">
@@ -41,7 +41,7 @@
             </div>
             <div id="label" style="display: block;">
                 您现有标签:
-                <?php if(is_array($label)): foreach($label as $key=>$li): if($li['filelabel'] != '无' and $li['filelabel'] != '公共文件'): ?><input type="radio" name="label" value="<?php echo ($li["filelabel"]); ?>"/><?php echo ($li["filelabel"]); ?>&nbsp &nbsp<?php endif; endforeach; endif; ?>
+                <?php if(is_array($label)): foreach($label as $key=>$li): if($li['filelabel'] != '无' and $li['filelabel'] != '私有文件'): ?><input type="radio" name="label" value="<?php echo ($li["filelabel"]); ?>"/><?php echo ($li["filelabel"]); ?>&nbsp &nbsp<?php endif; endforeach; endif; ?>
                 <input type="radio" name="label" value="无" checked/>无&nbsp &nbsp &nbsp &nbsp
                 <br/>
                 <br/>

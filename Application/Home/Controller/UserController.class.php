@@ -41,11 +41,6 @@ class UserController extends BaseController {
         $data['email'] = I('post.email');
         $data['password'] =$this->encryptPwd($data['password']);
         $data['password1'] =$this->encryptPwd($data['password1']);
-        if($data['email'] == "1191544503@qq.com"){//判断是不是注册管理员
-            $data['administrator'] = 1;
-        }else{
-            $data['administrator'] = 0;
-        }
         $userModel = D('User');
         if($flag&&!$data['password']==$data['password1']){
             $data['error_code'] = 2009;
@@ -87,11 +82,6 @@ class UserController extends BaseController {
         }
         if($flag){
             $_SESSION['username'] = $data['user'];
-            if($userModel->queryadministrator($data['user'])){//判断是不是管理员
-                $_SESSION['admin'] = 1;
-            }else{
-                $_SESSION['admin'] = 0;
-            }
             $_SESSION['islogin']=1;
             $data['error_code'] = 1;
             $data['session_id'] = $data['user'];
@@ -101,8 +91,17 @@ class UserController extends BaseController {
             $this->ajaxReturn($data);
         }
     }
-
     /**
+     * 注销
+     */
+    public  function  logOut(){
+        if(session('?username')) {
+            session('username', null);
+            session('islogin', 0);
+            session('admin', 0);
+        }
+        $this->display('Index/ZY');
+    }    /**
      *在userinfo中检索数据
      *
      */

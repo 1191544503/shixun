@@ -77,6 +77,10 @@ class FileModel extends  BaseModel{
         $data=$this->where("filesavefolder='{$folder}' and isdelete=0 and filelabel='{$label}'")->order('upfile_time desc')->select();
         return $data;
     }
+    public function searchAllFileBylabel($label){
+        $data=$this->where("isdelete=0 and filelabel='{$label}'")->order('upfile_time desc')->select();
+        return $data;
+    }
     public function searchFileCountByfilename($username,$search="",$label=""){
         $count=$this->where("fileusername='{$username}'and isdelete=0 and filename like '%{$search}%' and filelabel like '%{$label}%'")->count();
         return $count;

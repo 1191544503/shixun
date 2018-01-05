@@ -14,12 +14,13 @@
 </head>
 <body>
 <header>
-  <span><img src="/shixun/Public/image/1.png" width="100" alt="">资源下载站 </span>
-  <?php if($_SESSION['islogin'] != 1): ?><a class="item" onclick="$('#re').modal('show');" style="display:inline-block;float:right"><i class="yellow user icon"></i>注册</a>
-    <a class="item" onclick="$('#login').modal('show'); " style="display:inline-block;float:right">
+  <span><a href="<?php echo U('Index/index');?>" style="display:inline-block;"><img src="/shixun/Public/image/1.png" width="100" alt="">资源下载站 </a></span>
+  <?php if($_SESSION['islogin'] != 1): ?><a class="item" onclick="$('#re').modal('show');" style=" margin:20px;display:inline-block;float:right"><i class="yellow user icon"></i>注册</a>
+    <a class="item" onclick="$('#login').modal('show'); " style="margin-top:20px;display:inline-block;float:right">
       <i class="olive sign in icon"></i> 登录&nbsp&nbsp&nbsp&nbsp
     </a><?php endif; ?>
-  <?php if($_SESSION['islogin'] == 1): ?><a href="<?php echo U('User/teacherShow');?>" style="margin:20px; display:inline-block;float:right">个人中心</a><?php endif; ?>
+  <?php if($_SESSION['islogin'] == 1): ?><a href="<?php echo U('User/logOut');?>" style="margin:20px; display:inline-block;float:right">注销</a>
+      <a href="<?php echo U('User/teacherShow');?>" style="margin:20px; display:inline-block;float:right">个人中心</a><?php endif; ?>
 
 </header>
 <article class="container">
@@ -35,7 +36,7 @@
     </label><input id="search" type="text" name="" value="" placeholder="搜 索">
     <section>
       <ul>
-        <li><span><i class="fa fa-cube fa-lg"></i> Name</span><span><!--i class="fa fa-crop fa-lg"></i> UploadUser<--></span><span><i class="fa fa-calendar-minus-o fa-lg"></i> Last Update</span></li>
+        <li><span><i class="fa fa-cube fa-lg"></i> Name</span><span><i class="fa fa-crop fa-lg"></i> UploadUser</span><span><i class="fa fa-calendar-minus-o fa-lg"></i> Last Update</span></li>
         <hr/>
       </ul>
       <ul id="Content">
@@ -45,14 +46,17 @@
   </div>
   <nav class="right">
     <ul>
-      <li><a href="http://210.30.1.126/index.php/Index">XXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Problems/all">XXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Competition">XXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Test">XXXXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Exam">XXXXXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Bbs/invitation_list">XXXXXXXXXX</a></li>
-      <li><a href="http://210.30.1.126/index.php/Home/help">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+      <li><a href="http:www.baidu.com">XXXXXXXXXXXX</a></li>
+
       <li>意见反馈<br/>imax2017@yeah.net</li>
+      <li><a href="<?php echo U('Admin/index');?>">管理员登陆</a></li>
     </ul>
   </nav>
 
@@ -263,7 +267,7 @@
     const Url2="<?php echo U('File/showFileSearchByLabel');?>";
     /*  遍历渲染  ${text.fileusername}*/
     let xx=(text,i)=>{
-        let str=`<li><span><a href="${text.downloadurl}">${text.filename}</a></span><span></span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`
+        let str=`<li><span><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.fileusername}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`
         document.getElementById('Content').innerHTML+=str;
     }
     let xl=(name,Url)=>{
@@ -288,6 +292,51 @@
         }
     })
     }
+    /** 搜索 */
+//    var Search=()=>{
+//        const url=`<?php echo U('File/Search');?>`;
+//        let myselect=document.getElementById("Sel");
+//        let index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
+//        let val=myselect.options[index].value
+//
+//        fetch(url,{
+//            method:"post",
+//            headers:{
+//                "Content-type":"application/x-www-form-urlencoded"
+//            },
+//            credentials: "same-origin",
+//            body:`info=${search}`
+//        })
+//            .then(response=>{
+//            if (response.status == 200){
+//            return response;
+//        }
+//    })
+//    .then(data=>{
+//            return data.json();
+//    })
+//    .then(text=>{
+//            document.getElementById('Content').innerHTML='';
+//        console.log("请求成功，响应数据为:",text);
+//        FILE=[];
+//        for (let i in text) {
+//            xx(text[i],i);
+//            FILE[i]=text[i];
+//        }
+//        var label = document.getElementsByClassName('label');
+//        for (let x=0; x<label.length;x++) {
+//            label[x].onclick = function(){
+//                let tfilelabel=FILE[x].filelabel;
+//                tfilelabel = tfilelabel.replace(/\+/g, "%2B");
+//                tfilelabel = tfilelabel.replace(/\&/g, "%26");
+//                xl(`filelabel=${tfilelabel}`,Url2);
+//            }
+//        }
+//    })
+//    .catch(err=>{
+//            //     console.log("Fetch错误:"+err);
+//        })
+//    }
     /*  选择  */
     var Change=()=>{
         const url=`<?php echo U('File/showfile');?>`;

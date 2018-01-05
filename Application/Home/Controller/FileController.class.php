@@ -25,8 +25,8 @@ class FileController extends BaseController{
             }
         }
         else if($filefolder=="private"){
-         //  $username=$_SESSION['username'];
-           $result=$fileModel->queryFileByFoAndUs('testdata','2015082310');//查询文件夹内文件根据page分页
+           $username=$_SESSION['username'];
+           $result=$fileModel->queryFileByFoAndUs('testdata',$username);//查询文件夹内文件根据page分页
             for($i=0;$i<count($result);$i++){
                 $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
@@ -120,7 +120,7 @@ class FileController extends BaseController{
 
         $reallyfile=urlencode($reallyfile);
         $file = iconv("utf-8","GBK",$file);
-        $url ='H:/AppServ/www/test/Public/'.$folders.'/'.$file;
+        $url ='H:/AppServ/www/shixun/Public/'.$folders.'/'.$file;
         import('Org.Net.Http');
         $fileModel=D('file');
         $fileModel->addCount($file);
@@ -141,7 +141,7 @@ class FileController extends BaseController{
 
             $reallyfile = urlencode($reallyfile);
             $file = iconv("utf-8", "GBK", $file);
-            $url = 'H:/AppServ/www/test/Public/'.$folders.'/'.$file;
+            $url = 'H:/AppServ/www/shixun/Public/'.$folders.'/'.$file;
 
             if (file_exists($url)) {
                 $str = file_get_contents($url);//将整个文件内容读入到一个字符串中
@@ -161,14 +161,18 @@ class FileController extends BaseController{
     public function showFileSearchByLabel(){
         $label=I('post.filelabel');
         $fileModel = D('file');
-        $result=$fileModel->searchFileBylabel('ziyuan',$label);
+        if($label=="私有文件"){
+            $result=$fileModel->searchFileBylabel('testdata', $label);
+        }else {
+            $result = $fileModel->searchFileBylabel('ziyuan', $label);
+        }
         echo json_encode($result);
     }
     public function UserinfoSearchByLabel(){
         $label=I('post.filelabel');
         $fileModel = D('file');
         $fileusername = $_SESSION['username'];
-        $result=$fileModel->searchFileBylabel($fileusername,$label);
+        $result=$fileModel->searchAllFileBylabel($label);
         echo json_encode($result);
     }
     /**
