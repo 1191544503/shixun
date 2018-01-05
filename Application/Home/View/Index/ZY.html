@@ -269,9 +269,10 @@
 
     var FILE=[];//文件名
     const Url2="{:U('File/showFileSearchByLabel')}";
+    const Url3="{:U('Jubao/fileJubao')}";
     /*  遍历渲染  ${text.fileusername}*/
     let xx=(text,i)=>{
-        let str=`<li><span><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.fileusername}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`
+        let str=`<li><span><i class="fa fa-exclamation-triangle" title="举报该资源" style="color: #a00;margin-right: 30px;"></i><a href="${text.downloadurl}" style="display:inline-block;">${text.filename}</a></span><span>${text.fileusername}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`
         document.getElementById('Content').innerHTML+=str;
     }
     let xl=(name,Url)=>{
@@ -291,56 +292,47 @@
     .then(text=>{
             document.getElementById('Content').innerHTML='';
         console.log("请求成功，响应数据为:",text);
+        FILE=[];
         for (let i in text) {
             xx(text[i],i);
+            FILE[i]=text[i];
+        }
+        var jubao = document.getElementsByClassName('fa-exclamation-triangle');
+        for (let x=0; x<jubao.length;x++) {
+            jubao[x].onclick = function(){
+                let r=confirm("确认要举报"+FILE[x].filename+"吗？");
+                let filename=FILE[x].filesavename;
+                if(r==true)
+                    xp("filesavename="+filename,Url3);
+            }
         }
     })
     }
-    /** 搜索 */
-//    var Search=()=>{
-//        const url=`{:U('File/Search')}`;
-//        let myselect=document.getElementById("Sel");
-//        let index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
-//        let val=myselect.options[index].value
-//
-//        fetch(url,{
-//            method:"post",
-//            headers:{
-//                "Content-type":"application/x-www-form-urlencoded"
-//            },
-//            credentials: "same-origin",
-//            body:`info=${search}`
-//        })
-//            .then(response=>{
-//            if (response.status == 200){
-//            return response;
-//        }
-//    })
-//    .then(data=>{
-//            return data.json();
-//    })
-//    .then(text=>{
-//            document.getElementById('Content').innerHTML='';
-//        console.log("请求成功，响应数据为:",text);
-//        FILE=[];
-//        for (let i in text) {
-//            xx(text[i],i);
-//            FILE[i]=text[i];
-//        }
-//        var label = document.getElementsByClassName('label');
-//        for (let x=0; x<label.length;x++) {
-//            label[x].onclick = function(){
-//                let tfilelabel=FILE[x].filelabel;
-//                tfilelabel = tfilelabel.replace(/\+/g, "%2B");
-//                tfilelabel = tfilelabel.replace(/\&/g, "%26");
-//                xl(`filelabel=${tfilelabel}`,Url2);
-//            }
-//        }
-//    })
-//    .catch(err=>{
-//            //     console.log("Fetch错误:"+err);
-//        })
-//    }
+    /*********举报********/
+    let xp=(name,Url)=>{
+        fetch(Url,{
+            method:"post",
+            headers:{
+                "Content-type":"application/x-www-form-urlencoded"
+            },
+            credentials: "same-origin",
+            body:name
+        })
+            .then(response=>{
+            if (response.status == 200){
+            return response.json();
+        }
+    })
+    .then(data=>{
+        console.log(data);
+        if(data=='1000')
+        window.location.reload();
+        else if(data=='1001')
+            alert("举报失败");
+        else
+            alert("举报成功");
+    })
+    }
     /*  选择  */
     var Change=()=>{
         const url=`{:U('File/showfile')}`;
@@ -373,12 +365,21 @@
             FILE[i]=text[i];
         }
         var label = document.getElementsByClassName('label');
+        var jubao = document.getElementsByClassName('fa-exclamation-triangle');
         for (let x=0; x<label.length;x++) {
             label[x].onclick = function(){
                 let tfilelabel=FILE[x].filelabel;
                 tfilelabel = tfilelabel.replace(/\+/g, "%2B");
                 tfilelabel = tfilelabel.replace(/\&/g, "%26");
                 xl(`filelabel=${tfilelabel}`,Url2);
+            }
+        }
+        for (let x=0; x<jubao.length;x++) {
+            jubao[x].onclick = function(){
+                let r=confirm("确认要举报"+FILE[x].filename+"吗？");
+                let filename=FILE[x].filesavename;
+                if(r==true)
+                    xp("filesavename="+filename,Url3);
             }
         }
     })

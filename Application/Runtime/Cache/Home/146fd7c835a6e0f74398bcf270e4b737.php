@@ -116,7 +116,7 @@
     const Url2="<?php echo U('File/UserinfoSearchByLabel');?>";
     /*  遍历渲染  */
     let xx=(text,i)=>{
-        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete"></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>xxx</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
+        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete" ></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>xxx</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
         document.getElementById('Content').innerHTML+=str;
     }
 
@@ -160,8 +160,28 @@
     .then(text=>{
             document.getElementById('Content').innerHTML='';
        // console.log("请求成功，响应数据为:",text);
+        FILE=[];
         for (let i in text) {
             xx(text[i],i);
+            FILE[i]=text[i];
+        }
+        var delet = document.getElementsByClassName('fa-trash-o');
+        var label = document.getElementsByClassName('label');
+        for (let x=0; x<delet.length;x++) {
+            delet[x].onclick = function(){
+                let r=confirm("确认要删除"+FILE[x].filename+"吗？");
+                let filename=FILE[x].filesavename;
+                if(r==true)
+                    xd("filesavename="+filename,Url1);
+            }
+        }
+        for (let x=0; x<label.length;x++) {
+            label[x].onclick = function(){
+                let tfilelabel=FILE[x].filelabel;
+                tfilelabel = tfilelabel.replace(/\+/g, "%2B");
+                tfilelabel = tfilelabel.replace(/\&/g, "%26");
+                xl(`filelabel=${tfilelabel}`,Url2);
+            }
         }
     })
     }

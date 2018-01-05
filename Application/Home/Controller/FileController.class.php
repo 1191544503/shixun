@@ -33,11 +33,9 @@ class FileController extends BaseController{
         }
         echo json_encode($result);
     }
-
     /**
      * 处理文件信息
      */
-
     public function up(){
         $file= $_FILES['upfile'];
         $username = session('username');
@@ -77,9 +75,6 @@ class FileController extends BaseController{
             $this->error("上传失败",U('file/displayup'));
         }
     }
-
-
-
     /**
      * 文件上传函数
      * 参数 文件信息 保存的件名 保存的文件夹

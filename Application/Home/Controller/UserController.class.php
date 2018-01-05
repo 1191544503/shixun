@@ -39,6 +39,7 @@ class UserController extends BaseController {
         $data['password']  = I('post.password1');
         $data['password1'] = I('post.password2');
         $data['email'] = I('post.email');
+        $data['isdelete'] = 0;
         $data['password'] =$this->encryptPwd($data['password']);
         $data['password1'] =$this->encryptPwd($data['password1']);
         $userModel = D('User');
