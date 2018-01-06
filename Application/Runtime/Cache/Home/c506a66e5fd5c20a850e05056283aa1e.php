@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
   <title>管理员端</title>
@@ -8,10 +8,10 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
-<link href="__PUBLIC__/CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/shixun/Public/CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- //font -->
-  <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/shixun/Public/js/jquery-3.2.1.min.js"></script>
 
 
 <style type="text/css">
@@ -68,12 +68,12 @@ $(function(){
 <div class="main">
 <div class="a">
 <ul class="nav nav-pills nav-stacked">
-  <li ><a href="{:U('Admin/managefile')}" Target="RightMain">管理资源</a></li>
+  <li ><a href="<?php echo U('Admin/managefile');?>" Target="RightMain">管理资源</a></li>
   <li><a href="#">审查举报文件</a></li>
-  <li><a href="{:U('Index/index')}">返回前端</a></li>
+  <li><a href="<?php echo U('Index/index');?>">返回前端</a></li>
 </ul>
 </div>
 <iframe class="haha" id="RightMain" name="RightMain"></iframe>
 </div>
 </body>	
-</html> 
+</html>

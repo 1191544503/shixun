@@ -24,9 +24,20 @@ class AdminController extends BaseController{
             $_SESSION['admin']=1;
             $this->display('index');
         }else{
-            echo "<script>alert('用户名或密码错误！');</script>";
+            echo "<script>alert('用户名或密码错误! ');</script>";
             $this->display('login');
         }
+    }
+    public function managefile(){
+        $this->display('managefile');
+    }
+    public function dealManageFile(){
+        $fileModel = D('file');
+        $result=$fileModel->queryAllFile();
+        for($i=0;$i<count($result);$i++){
+            $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+        }
+        echo json_encode($result);
     }
 }
 

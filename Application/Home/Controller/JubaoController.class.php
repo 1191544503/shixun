@@ -14,7 +14,6 @@ class JubaoController extends BaseController{
      */
     public function fileJubao()
     {
-        $data['id'] = 1;
         $data['filesavename'] = I('post.filesavename');
         $data['count'] = 1;
         $data['isdelete'] = 0;
@@ -26,7 +25,5 @@ class JubaoController extends BaseController{
             $jubaoModel->adddata($data);
         }
         echo "1002";
-
-
     }
 }

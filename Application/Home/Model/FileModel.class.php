@@ -98,5 +98,9 @@ class FileModel extends  BaseModel{
         $result = $this->distinct(true)->field('filelabel')->where("fileusername='{$username}' and isdelete=0 and filelabel !=''")->select();
         return $result;
     }
+    public function queryAllFile(){
+        $result = $this->where("isdelete=0")->order('upfile_time desc')->select();
+        return $result;
+    }
 }
 ?>
