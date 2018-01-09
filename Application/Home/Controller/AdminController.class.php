@@ -39,6 +39,17 @@ class AdminController extends BaseController{
         }
         echo json_encode($result);
     }
+    public function dealJubaoFile(){
+        $jubaoModel=D('jubao');
+        $result=$jubaoModel->queryJubaoFile();
+        for($i=0;$i<count($result);$i++){
+            $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+        }
+        echo json_encode($result);
+    }
+    public function jubaofile(){
+        $this->display('jubaofile');
+    }
 }
 
 ?>

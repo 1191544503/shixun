@@ -21,7 +21,7 @@ class JubaoController extends BaseController{
         $jubaoModel = D('Jubao');
         if ($jubaoModel->queryFileisExist($data['filesavename'])) {
             $jubaoModel->addCount($data['filesavename']);
-        } else {
+        }else{
             $jubaoModel->adddata($data);
         }
         echo "1002";

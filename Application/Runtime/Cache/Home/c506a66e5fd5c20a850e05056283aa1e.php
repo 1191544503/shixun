@@ -69,7 +69,7 @@ $(function(){
 <div class="a">
 <ul class="nav nav-pills nav-stacked">
   <li ><a href="<?php echo U('Admin/managefile');?>" Target="RightMain">管理资源</a></li>
-  <li><a href="#">审查举报文件</a></li>
+  <li><a href="<?php echo U('Admin/jubaofile');?>" Target="RightMain">审查举报文件</a></li>
   <li><a href="<?php echo U('Index/index');?>">返回前端</a></li>
 </ul>
 </div>

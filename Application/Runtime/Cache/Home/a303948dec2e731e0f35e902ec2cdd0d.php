@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="__PUBLIC__/CSS/ZY.css">
-    <link rel="stylesheet" href="__PUBLIC__/CSS/font-awesome.min.css">
-    <link rel="stylesheet" href="__PUBLIC__/js/semantic.min.css">
-    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/js/semantic.min.js"></script>
+    <link rel="stylesheet" href="/shixun/Public/CSS/ZY.css">
+    <link rel="stylesheet" href="/shixun/Public/CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="/shixun/Public/js/semantic.min.css">
+    <script type="text/javascript" src="/shixun/Public/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/shixun/Public/js/semantic.min.js"></script>
     <title>文件&软件下载站(测试版)</title>
     <style  type="text/css">
         section ul li span:nth-of-type(1){
@@ -33,7 +33,7 @@
             text-align: center;
             letter-spacing: 1px;
         }
-        section ul li span:nth-of-type(5){
+        section ul li span:nth-of-type(6){
             width: 65px;
             height: 100%;
             border-radius: 3px;
@@ -62,7 +62,7 @@
 
 <body>
 <header>
-    <span><img src="__PUBLIC__/image/1.png" width="100" alt="">资源共享平台·资源管理页面</span>
+    <span><img src="/shixun/Public/image/1.png" width="100" alt="">资源共享平台·举报文件管理页面</span>
 </header>
 <article class="container">
     <div class=" left">
@@ -77,6 +77,7 @@
                 <li><span><i class="fa fa-cube fa-lg"></i> Name</span>
                     <span><i class="fa fa-crop fa-lg"></i> 下载次数</span>
                     <span><i class="fa fa-crop fa-lg"></i> 上传人</span>
+                    <span><i class="fa fa-crop fa-lg"></i> 举报次数</span>
                     <span><i class="fa fa-calendar-minus-o fa-lg"></i> Last Update</span>
                 </li>
             </ul>
@@ -91,11 +92,11 @@
 <script type="text/javascript">
 
     var FILE=[];//文件名
-    const Url1="{:U('User/deleteFile')}";
-    const Url2="{:U('File/UserinfoSearchByLabel')}";
+    const Url1="<?php echo U('User/deleteFile');?>";
+    const Url2="<?php echo U('File/UserinfoSearchByLabel');?>";
     /*  遍历渲染  */
     let xx=(text,i)=>{
-        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete" ></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>${text.fileusername}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
+        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete" ></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>${text.fileusername}</span><span>${text.count}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
         document.getElementById('Content').innerHTML+=str;
     }
 
@@ -167,7 +168,7 @@
 
     /*  获取数据  */
     (function Getdata(){
-        const url=`{:U('Admin/dealManageFile')}`;
+        const url=`<?php echo U('Admin/dealJubaoFile');?>`;
         fetch(url,{
             method:"post",
             headers:{

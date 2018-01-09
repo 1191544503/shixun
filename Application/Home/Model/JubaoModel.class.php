@@ -28,5 +28,11 @@ class JubaoModel extends  BaseModel{
         $sql="update Jubao set count=count+1 where filesavename='{$filesavename}'";
         $this->execute($sql);
     }
+    public function queryJubaoFile(){
+        $sql="select * from file,jubao where file.filesavename=jubao.filesavename"
+            ." and jubao.filesavename in (select filesavename from jubao)";
+        $result=$this->query($sql);
+        return $result;
+    }
 
 }

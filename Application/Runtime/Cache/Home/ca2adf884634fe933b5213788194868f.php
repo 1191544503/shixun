@@ -86,12 +86,7 @@
     </div>
 
 </article>
-<footer>
-    <img src="/shixun/Public/image/name.png" width="500" alt="">
-    <div id="time">
 
-    </div>
-</footer>
 </body>
 <script type="text/javascript">
 
