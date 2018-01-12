@@ -96,7 +96,7 @@
     const Url2="<?php echo U('File/UserinfoSearchByLabel');?>";
     /*  遍历渲染  */
     let xx=(text,i)=>{
-        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete" ></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>${text.fileusername}</span><span>${text.count}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
+        let str=`<li><span><i class="fa fa-trash-o fa-lg" title="delete" ></i><a href="${text.downloadurl}">${text.filename}</a></span><span>${text.count}</span><span>${text.fileusername}</span><span>${text.jubaocount}</span><span>${text.upfile_time}</span><span class="label">${text.filelabel}</span></li>`;
         document.getElementById('Content').innerHTML+=str;
     }
 
@@ -139,7 +139,7 @@
     })
     .then(text=>{
             document.getElementById('Content').innerHTML='';
-        // console.log("请求成功，响应数据为:",text);
+         console.log("请求成功，响应数据为:",text);
         FILE=[];
         for (let i in text) {
             xx(text[i],i);

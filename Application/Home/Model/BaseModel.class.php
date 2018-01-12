@@ -2,8 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: acm
- * Date: 2017/9/25
- * Time: 15:14
+ * Date: 2017/1/3
+ * Time: 8：32
+ * 基类
  */
 namespace Home\Model;
 use Think\Model;

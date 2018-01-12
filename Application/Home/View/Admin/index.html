@@ -32,37 +32,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  .a{
      float:left;
      width:10%;
-     height:1000;
+     height:1000px;
  }
  .main{
- height:100%:
+ height:100%;
  width:100%;
  background-color:green;
  }
 </style>
 
-<script>
-$(function(){
-	var a;
-	var $obj = $("#");
-	var $obj1= $("#");
-
-   $obj.click(function(){
-	   $.ajax({
-		type:"post",
-		url:"#",
-		async: false;
-		dataType : "json",
-		success : function(data) {        /*动态建立表*/
-          $("#").val() = data.name;
-		  $("#").val()=data.address;
-		  $("#").val()=data.telephone;
-		  }
-	});
-   })
-
-})
-</script>
 </head>
 <body>
 <div class="main">

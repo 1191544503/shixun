@@ -1,6 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: jack
+ * Date: 2018/1/3
+ * Time: 15:38
+ * 用于操作文件
+ */
 namespace Home\Controller;
 use Think\Controller;
+use think\response\Json;
+
 header("content-type:text/html;charset=utf-8");
 class FileController extends BaseController{
     public function displayup(){
@@ -12,7 +21,7 @@ class FileController extends BaseController{
     }
     /**
      * 展示文件
-     *
+     *@return Json
      */
     public function showfile(){
         $fileModel = D('file');
@@ -21,20 +30,20 @@ class FileController extends BaseController{
             $username=$_SESSION['username'];
             $result=$fileModel->queryFileByFolder('ziyuan');
             for($i=0;$i<count($result);$i++){
-                $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+                $result[$i]['downloadurl'] = U('File/duandiandownloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
         }
         else if($filefolder=="private"){
            $username=$_SESSION['username'];
            $result=$fileModel->queryFileByFoAndUs('testdata',$username);//查询文件夹内文件根据page分页
             for($i=0;$i<count($result);$i++){
-                $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+                $result[$i]['downloadurl'] = U('File/duandiandownloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
             }
         }
         echo json_encode($result);
     }
     /**
-     * 处理文件信息
+     * 处理文件信息上传文件
      */
     public function up(){
         $file= $_FILES['upfile'];
@@ -77,7 +86,10 @@ class FileController extends BaseController{
     }
     /**
      * 文件上传函数
-     * 参数 文件信息 保存的件名 保存的文件夹
+     * @param <Array> file 文件路径
+     * @param <String> filename  文件名称
+     * @param <String> folder 文件所在文件夹
+     * @return  boolean
      */
     public function upFile($file,$filename,$folders){
         $folders = iconv("utf-8","GBK",$folders);
@@ -105,8 +117,7 @@ class FileController extends BaseController{
         }
 }
      /**
-      * 文件下载函数
-      *
+      * 正常方式文件下载函数
       */
  public function downloadFile(){
         $folders=I('get.folders');
@@ -120,11 +131,81 @@ class FileController extends BaseController{
         $fileModel=D('file');
         $fileModel->addCount($file);
 
-        $http=new \Org\Net\Http;
+        $http=new \Org\Net\Http;//调用HTTP协议下载
         $http->download($url,$reallyfile);
  }
+
     /**
-     *
+     * 断点续传方式文件下载
+     */
+    public function duandiandownloadFile(){
+        $folders=I('get.folders');
+        $file = I('get.file');
+        $reallyfile=I('get.reallyfile');
+
+        $reallyfile=urlencode($reallyfile);
+        $file = iconv("utf-8","GBK",$file);
+        $url ='H:/AppServ/www/shixun/Public/'.$folders.'/'.$file;
+        include('Transfer.php');
+
+        $fileModel=D('file');
+        $fileModel->addCount($file);
+
+        $type=pathinfo($url, PATHINFO_EXTENSION);
+        $type=strtolower($type);
+        if($type=="doc"||$type=="docx"){
+            $mimeType="application/msword";
+        }else if($type=="exe"){
+            $mimeType="application/x-msdownload";
+        }else if($type=="jpg"||$type=="jpeg"){
+            $mimeType="image/jpeg";
+        }else if($type=="pdf"){
+            $mimeType="application/pdf";
+        }else if($type=="xls"){
+            $mimeType="application/vnd.ms-excel";
+        }else {
+            $mimeType = "application/octet-stream";
+        }
+        $range = isset($_SERVER['HTTP_RANGE'])?$_SERVER['HTTP_RANGE']:null;
+        $transfer = new \Transfer($url,$mimeType,$range,$reallyfile);
+        set_time_limit(0);
+        if (1) {
+            $transfer->setIsLog(true);
+        }
+        $transfer->send();
+
+    }
+
+    public function test(){
+
+        include('Transfer.php');
+        $filePath = 'C:\Users\jack\Desktop\45.txt';
+        $type=pathinfo($filePath, PATHINFO_EXTENSION);
+        $type=strtolower($type);
+        if($type=="doc"||$type=="docx"){
+            $mimeType="application/msword";
+        }else if($type=="exe"){
+            $mimeType="application/x-msdownload";
+        }else if($type=="jpg"||$type=="jpeg"){
+            $mimeType="image/jpeg";
+        }else if($type=="pdf"){
+            $mimeType="application/pdf";
+        }else if($type=="xls"){
+            $mimeType="application/vnd.ms-excel";
+        }else {
+            $mimeType = "application/octet-stream";
+        }
+        $range = isset($_SERVER['HTTP_RANGE'])?$_SERVER['HTTP_RANGE']:null;
+        set_time_limit(0);
+        $transfer = new \Transfer($filePath,$mimeType,$range,$reallyfile="12.txt");
+        if (IS_DEBUG) {
+            $transfer->setIsLog(true);
+        }
+        $transfer->send();
+
+    }
+    /**
+     *TXT格式的在线浏览
      */
     public function onlineShow()
     {
@@ -152,17 +233,29 @@ class FileController extends BaseController{
 
     /**
      * 在showfile中检索数据
+     * @return Json
      */
     public function showFileSearchByLabel(){
         $label=I('post.filelabel');
         $fileModel = D('file');
         if($label=="私有文件"){
             $result=$fileModel->searchFileBylabel('testdata', $label);
+            for($i=0;$i<count($result);$i++){
+                $result[$i]['downloadurl'] = U('File/duandiandownloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+            }
         }else {
             $result = $fileModel->searchFileBylabel('ziyuan', $label);
+            for($i=0;$i<count($result);$i++){
+                $result[$i]['downloadurl'] = U('File/duandiandownloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+            }
         }
         echo json_encode($result);
     }
+
+    /**
+     * 根据文件分类进行搜索
+     * @return Json
+     */
     public function UserinfoSearchByLabel(){
         $label=I('post.filelabel');
         $fileModel = D('file');

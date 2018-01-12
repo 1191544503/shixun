@@ -1,14 +1,24 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: jack
+ * Date: 2018/1/4
+ * Time: 9:38
+ * 用于管理用户的一些操作
+ */
 namespace Home\Controller;
 use Think\Controller;
 class UserController extends BaseController {
+    /**
+     * 初始化用户主页
+     */
     public function userinfo(){
         $fileModel = D('file');
         $username=session('username');
 
         $result=$fileModel->queryFileByUsername($username);
         for($i=0;$i<count($result);$i++){
-            $result[$i]['downloadurl'] = U('File/downloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
+            $result[$i]['downloadurl'] = U('File/duandiandownloadFile')."&folders={$result[$i]['filesavefolder']}&file={$result[$i]['filesavename']}&reallyfile={$result[$i]['filename']}&fileusername={$result[$i]['username']}";
         }
         $label=$fileModel->searchLabelByUsername($username);//查询标签数据
         $this->assign(label,$label);
@@ -20,6 +30,7 @@ class UserController extends BaseController {
 
     /**
      * 文件删除
+     * @return int
      */
     public function deleteFile(){
         $filesavename = I('post.filesavename');
@@ -32,6 +43,7 @@ class UserController extends BaseController {
     }
     /**
      * 个人注册
+     * @return Json
      */
     public function register(){
         $flag = 1;
@@ -40,7 +52,7 @@ class UserController extends BaseController {
         $data['password1'] = I('post.password2');
         $data['email'] = I('post.email');
         $data['isdelete'] = 0;
-        $data['password'] =$this->encryptPwd($data['password']);
+        $data['password'] =$this->encryptPwd($data['password']);//加密密码
         $data['password1'] =$this->encryptPwd($data['password1']);
         $userModel = D('User');
         if($flag&&!$data['password']==$data['password1']){
